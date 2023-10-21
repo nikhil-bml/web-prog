@@ -7,17 +7,16 @@
     
 </head>
 <body>
-    <header class="bg-white mt-2">
-        <div class="container">
+    <header class="bg-white" style="height:15px;">
+        <div class="header_container">
             <div class="row align-items-center">
                 <div class="col-6">
                     <img src= {% static "healthy_hunger/img/logo.png" %} alt="Your Logo" class="img-fluid" width="200" height="100">
                 </div>
                 <div class="col-6 text-right">
-                    <a href="#" id='header_btn' class="btn btn-link">Home</a>
-                    <a href="#" id='header_btn' class="btn btn-link">About</a>
-                    <a href="#" id='header_btn' class="btn btn-link">Services</a>
-                    <a href="#" id='header_btn' class="btn btn-link">Contact</a>
+                    <a href="#" id='header_btn' class="btn btn-link">Home </a>
+                    <a href="#" id='header_btn' class="btn btn-link">About Us</a>
+                    <a href="#" id='header_btn' class="btn btn-link">Contact Us</a>
                 </div>
             </div>
         </div>
@@ -27,8 +26,27 @@
         {% block content %}{% endblock %}
     </div>
 
-    <footer class="bg-dark text-light py-3">
-      <P>Something</P>
+    <footer style="display: flex; justify-content: space-between;">
+        <div class="footer_row pt-3 pl-4">
+            <div class="footer_column">
+                <p style="font-weight:bold; font-size:20px">Company</p>
+                <a href="">About Us</a>
+            </div>
+            <div class="footer_column">
+                <p style="font-weight:bold; font-size:20px">Contact</p>
+                <a href="">Contact Us</a>
+            </div>
+            <div class="footer_column">
+                <p style="font-weight:bold; font-size:20px">Legal</p>
+                <a href="">Terms & Conditions</a>
+            </div>
+        </div>
+        <div class="footer_text">
+            <h1>WORK</h1>
+            <h1>EAT</h1>
+            <h1>SLEEP</h1>
+            <h1>REPEAT</h1>
+        </div>
     </footer>
 </body>
 </html>

@@ -22,5 +22,45 @@
         ">
     </div>
 </div>
+<body>
+<div class="container">
+    <br>
+    <h1>Popular Items</h1>
+    <div class="row mt-5">
+        <div class="column">
+            <a href="">
+            <img src={% static "healthy_hunger/img/spicy_burger.jpg" %} alt="Spicy Burger" style="width:100%">
+            <p class="mt-1">Satan Paradise Burger</p>
+            </a>
+        </div>
+        <div class="column">
+            <a href="">
+            <img src={% static "healthy_hunger/img/gravy_burger.jpg" %} alt="Gravy Burger" style="width:100%">
+            <p class="mt-1">Dripping Moments Burger</p>
+            </a>
+        </div>
+        <div class="column">
+            <a href="">
+            <img src={% static "healthy_hunger/img/chicken.jpg" %} alt="chicken" style="width:100%">
+            <p class="mt-1">Hot Chicken Wings</p>
+            </a>
+        </div>
+        <div class="column">
+            <a href="">
+            <img src={% static "healthy_hunger/img/choco.jpg" %} alt="choco lava cake" style="width:100%">
+            <p class="mt-1">Sweet Melting Moments Cake</p>
+            </a>
+        </div>
+    </div>
+</div>
+<br>
+
+<div class="map_container">
+    <h1 class="row mt-5">Find The Nearest Restaurant</h1>
+    <div class="mt-5" id="map_iframe">
+        <iframe src="https://maps.google.com/maps?ie=UTF8&amp;iwloc=B&amp;output=embed" width="90%" height="600" style="border:0;" loading="lazy"></iframe>
+    </div>
+</div>
+
 
 {% endblock %}
