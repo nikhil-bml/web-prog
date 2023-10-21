@@ -1,0 +1,26 @@
+{% extends "healthy_hunger/base.html" %}
+{% load static %}
+{% block link1 %} <link rel="stylesheet" href={% static "healthy_hunger/css/bootstrap.min.css" %}> {% endblock link1 %}
+{% block link2 %} <link rel="stylesheet" href={% static "healthy_hunger/css/custom.css" %}> {% endblock link2 %}
+{% block title %} Home {% endblock %}
+{% block content %}
+<div class="container-sm mt-4">
+    <div class="image-container">
+        <div class="headline_text">
+            <p class="headline">Are you hungry?</p>
+        </div>
+        <div class="headline_subtitle">
+            <p class="subtitle">Order your favourite dishes in a few clicks!</p>
+        </div>
+        <form>
+            <div class="white-box">
+                <input class="form-control" style="width: 450; transform: translate(-10%, -5%);" type="text" id="userInput" placeholder="What are you craving for today?">
+                <button type="submit" style="padding: 15px 60px; background-color: #F4CF09; color: #fff; border: none; cursor: pointer">Find Food</button>
+            </div>
+        </form>
+        <img src={% static "healthy_hunger/img/background.jpg" %} alt="Background Image" style="width: 100%; height: 900; object-fit:contain;;
+        ">
+    </div>
+</div>
+
+{% endblock %}
