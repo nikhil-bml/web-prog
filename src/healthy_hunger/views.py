@@ -5,7 +5,12 @@ from .models import Product
 class Home(View):
     template_name = "healthy_hunger/home.html"
     def get(self, request):
-        context = {}
+        context = {
+            "products":[]
+        }
+        popular_items = [1,2,3,4]
+        [context["products"].append(Product.objects.get(pk=pk)) for pk in popular_items if Product.objects.filter(pk=pk).exists()]
+
         return render(request, self.template_name, context)
 
 class ProductView(View):
@@ -22,4 +27,5 @@ class ProductView(View):
             "name":product.name,
             "ingredients":product.ingredients
         }
+
         return render(request, self.template_name, context)
