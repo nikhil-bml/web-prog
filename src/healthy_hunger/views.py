@@ -21,11 +21,7 @@ class ProductView(View):
             return HttpResponseRedirect("/")
         
         context={
-            "product_image":product.product_image.url,
-            "nutrition_image":product.nutrition_image.url,
-            "description":product.description,
-            "name":product.name,
-            "ingredients":product.ingredients
+            "product": product
         }
 
         return render(request, self.template_name, context)

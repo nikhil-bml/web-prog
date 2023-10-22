@@ -8,12 +8,12 @@
 <div class="custom-container">
     <div class="row">
         <div class="custom_image">
-            <img src="{{ product_image }}" alt="Product Image">
+            <img src="{{ product.product_image.url }}" alt="Product Image">
         </div>
         <div class="custom_text">
-            <h1>{{ name }}</h1>
+            <h1>{{ product.name }}</h1>
             <p>
-                {{ description|linebreaks }}
+                {{ product.description|linebreaks }}
             </p> 
         </div>
     </div>
@@ -23,12 +23,12 @@
     <div class="row">
         <div class="nutrieng_image">
             <h1>Nutrition</h1>
-            <img src="{{ nutrition_image }}" alt="Nutrition">
+            <img src="{{ product.nutrition_image.url }}" alt="Nutrition">
         </div>
         <div class="nutrieng_text">
             <h1>Ingredients</h1>
             <p>
-                {{ ingredients|linebreaks }}
+                {{ product.ingredients|linebreaks }}
             </p> 
             <br><br>
             <a href=""><button class="nutrieng_order">Click Here To Order Now</button></a>
