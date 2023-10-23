@@ -2,6 +2,7 @@ from django.shortcuts import HttpResponseRedirect,render
 from django.views import View
 from .models import Product
 from .forms import ProductSearchForm, QueryForm
+from .extras import full_text_search
 class Home(View):
     template_name = "healthy_hunger/home.html"
     form = ProductSearchForm
@@ -58,3 +59,18 @@ class ContactView(View):
             form.save()
             return HttpResponseRedirect('/')
         return HttpResponseRedirect('/contact')
+
+class Search(View):
+    template_name = "healthy_hunger/search.html"
+
+    def get(self, request, product):
+        context = {
+            "products":full_text_search(factor=["name","ingredients"],model="Product", search_term=product)
+        }
+        return render(request, self.template_name ,context)
+    
+    def post(self, request, product):
+        form = ProductSearchForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect(f"/search/{request.POST.get('name')}/")
+        return HttpResponseRedirect("/")

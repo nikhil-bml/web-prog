@@ -1,0 +1,47 @@
+{% extends "healthy_hunger/base.html" %}
+{% load static %}
+{% block meta %}<meta name="viewport" content="width=device-width, initial-scale=1.0">{% endblock meta %}
+{% block link1 %} <link rel="stylesheet" href={% static "healthy_hunger/css/bootstrap.min.css" %}> {% endblock link1 %}
+{% block link2 %} <link rel="stylesheet" href={% static "healthy_hunger/css/custom.css" %}> {% endblock link2 %}
+{% block title %} Home {% endblock %}
+{% block content %}
+<div class="container-sm">
+    <div class="image-container">
+        <div class="headline_text">
+            <p class="headline">Are you hungry?</p>
+        </div>
+        <div class="headline_subtitle">
+            <p class="subtitle">Order your favourite dishes in a few clicks!</p>
+        </div>
+        <form method="POST">
+            <div class="white-box">
+                {% csrf_token %}
+                <input class="form-control mr-5" style="width: 450;" type="text" name="name" placeholder="What are you craving for today?">
+                <button type="submit" style="padding: 15px 60px; background-color: #F4CF09; color: #fff; border: none; cursor: pointer; border-radius: 10px; font-size:100%">Find Food</button>
+            </div>
+        </form>
+        <img src={% static "healthy_hunger/img/background.jpg" %} alt="Background Image" style="width: 100%; height: 900; object-fit:contain;;
+        ">
+    </div>
+
+    <div style="padding:5%;" class="table-responsive">
+        <table class="table table-hover">
+            <tr>
+                <th>Product Image</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Order</th>
+            </tr>
+        {% for product in products %}
+            <tr>
+            <td style="width:20%;"><img src="{{ product.product_image.url }}" alt="Product Image" style="max-width:100%;max-height:auto; border-radius:20px;"></td>
+            <td style="width:20%">{{ product.name }}</td>
+            <td>{{ product.description }}</td>
+            <td><a href="/product/{{ product.id }}"><Button class="btn btn-danger">Order Now</Button></a></td>
+            </tr>
+        {% endfor %}
+        </table>
+      
+    </div>
+
+{% endblock %}

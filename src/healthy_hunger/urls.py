@@ -9,6 +9,7 @@ urlpatterns = [
     path('about/', views.AboutView.as_view(), name='about'),
     path('terms/', views.TermsView.as_view(), name='terms'),
     path('contact/', views.ContactView.as_view(), name='contact'),
+    path('search/<str:product>/', views.Search.as_view(), name='search')
 ]
 
 if settings.DEBUG:
