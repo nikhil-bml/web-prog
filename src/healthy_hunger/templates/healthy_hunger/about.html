@@ -1,0 +1,71 @@
+{% extends "healthy_hunger/base.html" %}
+{% load static %}
+{% block meta %}<meta name="viewport" content="width=device-width, initial-scale=1.0">{% endblock meta %}
+{% block link1 %} <link rel="stylesheet" href={% static "healthy_hunger/css/bootstrap.min.css" %}> {% endblock link1 %}
+{% block link2 %} <link rel="stylesheet" href={% static "healthy_hunger/css/custom.css" %}> {% endblock link2 %}
+{% block title %} Home {% endblock %}
+{% block content %}
+<div class="container-sm mt-4">
+    <div class="image-container">
+        <div class="headline_text">
+            <p class="headline">Are you hungry?</p>
+        </div>
+        <div class="headline_subtitle">
+            <p class="subtitle">Order your favourite dishes in a few clicks!</p>
+        </div>
+        <img src={% static "healthy_hunger/img/background.jpg" %} alt="Background Image" style="width: 100%; height: 900; object-fit:contain;;
+        ">
+    </div>
+</div>
+
+<div class="about_container">
+    <div class="row">
+        <div class="about_image_0">
+            <h1></h1>
+            <img src={% static "healthy_hunger/img/about_burger.jpg" %}>
+        </div>
+        <div class="about_text">
+            <h1>GREAT FOOD COMES FIRST</h1>
+            <p>
+                <ul>
+                <li>Our Restaurants are known for serving high quality, great-tasting and affordable food.</li>
+                <li>Our commitment to the home ingredients, signature-recipes are the driving factor to our exponential growth.</li>
+                <li>This has and will be the driving factor for Healthy Hunger in the future years as well.</li>
+                </ul>
+            </p> 
+        </div>
+    </div>
+    <div class="row" style="padding-top:3%;">
+        <div class="about_image_1">
+            <img src={% static "healthy_hunger/img/ambience.jpg" %}>
+            <p style="font-size:35; font-weight:bold; margin-left:7%">Our Restaurants</p>
+            <p style="font-size:18; margin-left:7%">
+                Along with our open kitchen design and our California inspired contemporary decor,<br> 
+                you'll find a mix of seating areas, music and lighting to make you feel at home.
+            </p>
+        </div>
+        <div class="about_image_2">
+            <img src={% static "healthy_hunger/img/more_food.jpg" %}>
+            <p style="font-size:35; font-weight:bold; margin-left: -10%;">Our Restaurants</p>
+            <p style="font-size:18; margin-left: -10%;">
+                We pride ourselves on our craveable Mexican-Inspired menu,<br> along with our standards onfood safety and product quality.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="about_image_0">
+            <h1></h1>
+            <img src={% static "healthy_hunger/img/customer.jpg" %}>
+        </div>
+        <div class="about_text">
+            <p style="font-size:35; font-weight:bold; margin-left: -2%;">Our People</p>
+            <p style="margin-left: -2%;">
+                We have a maniacal focus on our customers and we always celebrate the accomplishments of our people. Sound like you?
+
+            </p> 
+        </div>
+    </div>
+</div>
+<br><br>
+
+{% endblock %}

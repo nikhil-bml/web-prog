@@ -1,5 +1,6 @@
 <html>
 <head>
+    {% block meta %}<meta name="viewport" content="width=device-width, initial-scale=1.0">{% endblock meta %}
     <title>{% block title %}My Website{% endblock %}</title>
     {% load static %}
     {% block link1 %} <link rel="stylesheet" href={% static "healthy_hunger/css/bootstrap.min.css" %}> {% endblock link1 %}
@@ -7,16 +8,16 @@
     
 </head>
 <body>
-    <header class="bg-white" style="height:15px;">
+    <header class="bg-white" style="height:2%; padding-bottom:3%">
         <div class="header_container">
             <div class="row align-items-center">
                 <div class="col-6">
-                    <a href="/"><img src= {% static "healthy_hunger/img/logo.png" %} alt="Your Logo" class="img-fluid" width="200" height="100"></a>
+                    <a href="/"><img src= {% static "healthy_hunger/img/logo.png" %} alt="Your Logo" class="img-fluid mb-1" width="20%" height="10%"></a>
                 </div>
                 <div class="col-6 text-right">
                     <a href="#" id='header_btn' class="btn btn-link">Home </a>
-                    <a href="#" id='header_btn' class="btn btn-link">About Us</a>
-                    <a href="#" id='header_btn' class="btn btn-link">Contact Us</a>
+                    <a href="#" id='header_btn' class="btn btn-link ml-2">About Us</a>
+                    <a href="#" id='header_btn' class="btn btn-link mr-1">Contact Us</a>
                 </div>
             </div>
         </div>

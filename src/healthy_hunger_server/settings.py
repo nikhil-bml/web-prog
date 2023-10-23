@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'healthy_hunger',
     # THird party apps
     "django_browser_reload",
+    "widget_tweaks"
 ]
 
 MIDDLEWARE = [

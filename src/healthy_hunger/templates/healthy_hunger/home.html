@@ -1,10 +1,11 @@
 {% extends "healthy_hunger/base.html" %}
 {% load static %}
+{% block meta %}<meta name="viewport" content="width=device-width, initial-scale=1.0">{% endblock meta %}
 {% block link1 %} <link rel="stylesheet" href={% static "healthy_hunger/css/bootstrap.min.css" %}> {% endblock link1 %}
 {% block link2 %} <link rel="stylesheet" href={% static "healthy_hunger/css/custom.css" %}> {% endblock link2 %}
 {% block title %} Home {% endblock %}
 {% block content %}
-<div class="container-sm mt-4">
+<div class="container-sm">
     <div class="image-container">
         <div class="headline_text">
             <p class="headline">Are you hungry?</p>
@@ -12,9 +13,10 @@
         <div class="headline_subtitle">
             <p class="subtitle">Order your favourite dishes in a few clicks!</p>
         </div>
-        <form>
+        <form method="POST">
             <div class="white-box">
-                <input class="form-control" style="width: 450; transform: translate(-10%, -5%);" type="text" id="userInput" placeholder="What are you craving for today?">
+                {% csrf_token %}
+                <input class="form-control mr-5" style="width: 450;" type="text" name="name" placeholder="What are you craving for today?">
                 <button type="submit" style="padding: 15px 60px; background-color: #F4CF09; color: #fff; border: none; cursor: pointer; border-radius: 10px; font-size:100%">Find Food</button>
             </div>
         </form>
