@@ -280,3 +280,25 @@ footer p {
 .about_text h1{
     font-weight: bold;
 }
+
+.contact {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.contact h1{
+    font-weight: bold;
+}
+
+#name,#query,#email {
+background-color: aliceblue;
+}
+#query {
+    width: 100%;
+    height: 300;
+}
+
+.contact_submit {
+    text-align: center;
+}
+.contact_submit button {
+    width: 100%;
+}

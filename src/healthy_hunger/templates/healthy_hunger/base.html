@@ -14,10 +14,10 @@
                 <div class="col-6">
                     <a href="/"><img src= {% static "healthy_hunger/img/logo.png" %} alt="Your Logo" class="img-fluid mb-1" width="20%" height="10%"></a>
                 </div>
-                <div class="col-6 text-right">
-                    <a href="#" id='header_btn' class="btn btn-link">Home </a>
-                    <a href="#" id='header_btn' class="btn btn-link ml-2">About Us</a>
-                    <a href="#" id='header_btn' class="btn btn-link mr-1">Contact Us</a>
+                <div class="col-3 text-right">
+                    <a href="/" id='header_btn' class="btn btn-link">Home </a>
+                    <a href="/about/" id='header_btn' class="btn btn-link ml-2">About Us</a>
+                    <a href="/contact/" id='header_btn' class="btn btn-link mr-1">Contact Us</a>
                 </div>
             </div>
         </div>
@@ -26,20 +26,20 @@
     <div id="content">
         {% block content %}{% endblock %}
     </div>
-
+    <br><br>
     <footer style="display: flex; justify-content: space-between;">
         <div class="footer_row pt-3 pl-4">
             <div class="footer_column">
                 <p style="font-weight:bold; font-size:20px">Company</p>
-                <a href="">About Us</a>
+                <a href="/about/">About Us</a>
             </div>
             <div class="footer_column">
                 <p style="font-weight:bold; font-size:20px">Contact</p>
-                <a href="">Contact Us</a>
+                <a href="/contact/">Contact Us</a>
             </div>
             <div class="footer_column">
                 <p style="font-weight:bold; font-size:20px">Legal</p>
-                <a href="">Terms & Conditions</a>
+                <a href="/terms/">Terms & Conditions</a>
             </div>
         </div>
         <div class="footer_text mt-2">

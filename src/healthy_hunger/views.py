@@ -1,7 +1,7 @@
 from django.shortcuts import HttpResponseRedirect,render
 from django.views import View
 from .models import Product
-from .forms import ProductSearchForm
+from .forms import ProductSearchForm, QueryForm
 class Home(View):
     template_name = "healthy_hunger/home.html"
     form = ProductSearchForm
@@ -36,6 +36,25 @@ class AboutView(View):
     template_name = "healthy_hunger/about.html"
     def get(self, request):
         context = {
-            
+
         }
         return render(request, self.template_name, context)
+    
+class TermsView(View):
+    template_name = "healthy_hunger/terms_cond.html"
+    def get(self, request):
+        context = {}
+        return render(request, self.template_name, context)
+
+class ContactView(View):
+    template_name = "healthy_hunger/contact.html"
+    form = QueryForm
+    def get(self, request):
+        context = {}
+        return render(request, self.template_name, context)
+    def post(self, request):
+        form = self.form(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/contact')
