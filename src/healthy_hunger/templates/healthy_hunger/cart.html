@@ -1,0 +1,44 @@
+{% extends "healthy_hunger/base.html" %}
+{% load static %}
+{% block meta %}<meta name="viewport" content="width=device-width, initial-scale=1.0">{% endblock meta %}
+{% block link1 %} <link rel="stylesheet" href={% static "healthy_hunger/css/bootstrap.min.css" %}> {% endblock link1 %}
+{% block link2 %} <link rel="stylesheet" href={% static "healthy_hunger/css/custom.css" %}> {% endblock link2 %}
+{% block script %}<script src="{% static 'healthy_hunger/js/custom.js' %}"></script>{% endblock script %}
+{% block title %} Search {% endblock %}
+{% block content %}
+
+<div style="padding: 5%;" class="table-responsive">
+    <table class="table table-hover">
+        <tr>
+            <th>Product Image</th>
+            <th>Name</th>
+            <th>Price(INR)</th>
+            <th>Order Quantity</th>
+        </tr>
+        {% for product in products %}
+        <tr>
+            <td style="width: 20%;"><img src="{{ product.product_image.url }}" alt="Product Image" style="max-width: 100%; max-height: auto; border-radius: 20px;"></td>
+            <td style="width: 20%">{{ product.name }}</td>
+            <td id="price_{{product.id}}" style="font-size:20;">{{ product.price }}</td>
+            <td style="width: 20%;">
+                <div class="quantity-control">
+                    <button class="btn btn-sm btn-secondary" onclick="incr_or_decr(this, -1, {{ product.id }}, {{ product.price }})">-</button>
+                    <p id="{{ product.id }}" name="{{ product.id }}">1</p>
+                    <button class="btn btn-sm btn-primary" onclick="incr_or_decr(this, 1, {{ product.id }}, {{ product.price }})">+</button>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <div class="total_div" style="max-width:60%">
+    <form method="POST" class="form-group">
+        {% csrf_token %}
+        <p>Total Value</p>
+        <input id="total_value" class="form-control" name="total_value" value={{ total_price }}>
+        <br>
+        <input type="submit" value="Order now" class="btn btn-danger btn-md" >
+    </form>
+    </div>
+</div>
+
+{% endblock %}

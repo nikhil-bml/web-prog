@@ -316,3 +316,9 @@ background-color: aliceblue;
     width: 400px;
     color: white;
   }
+
+  .total_div p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20;
+    font-weight: bold;
+  }

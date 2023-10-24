@@ -4,6 +4,11 @@ from .models import Product
 from .forms import ProductSearchForm, QueryForm, RegisterForm, LoginForm
 from .extras import full_text_search
 from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
+from django.conf import settings
+import stripe
+
+stripe.api_key = settings.STRIPE_API_KEY
 
 class Home(View):
     template_name = "healthy_hunger/home.html"
@@ -101,7 +106,6 @@ class Login(View):
     def post(self, request):
         form = self.form(request.POST)
         user=authenticate(username=form.data["username"],password=form.data["password"])
-        print(user)
         if not user:
             return HttpResponseRedirect("/login/")
         
@@ -115,3 +119,39 @@ class Logout(View):
             return HttpResponseRedirect("/")
         return HttpResponseRedirect("/login/")
         
+class Cart(View):
+    template_name = "healthy_hunger/cart.html"
+    def get(self, request):
+        if not request.user.is_authenticated:
+            return HttpResponseRedirect("/login/")
+        products = [product for product in Product.objects.all()]
+        total_price = sum([product.price for product in products])
+        context={
+            "products":[product for product in Product.objects.all()],
+            "total_price":total_price
+        }
+        return render(request, self.template_name, context)
+    
+    def post(self, request):
+        total_value = int(float(request.POST["total_value"]))
+
+        session = stripe.checkout.Session.create(
+            line_items=[
+                {
+                    'price_data': {
+                        'currency': 'inr',
+                        'product_data': {
+                            'name': 'Food',
+                        },
+                        'unit_amount': total_value*100,
+                    },
+                    'quantity': 1,
+                },
+            ],
+            mode='payment',
+            success_url='http://localhost:7000/',
+            cancel_url='http://localhost:7000/',
+        
+        )
+
+        return HttpResponseRedirect(f"{session.url}")
