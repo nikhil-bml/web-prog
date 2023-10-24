@@ -3,7 +3,7 @@
 {% block meta %}<meta name="viewport" content="width=device-width, initial-scale=1.0">{% endblock meta %}
 {% block link1 %} <link rel="stylesheet" href={% static "healthy_hunger/css/bootstrap.min.css" %}> {% endblock link1 %}
 {% block link2 %} <link rel="stylesheet" href={% static "healthy_hunger/css/custom.css" %}> {% endblock link2 %}
-{% block title %} Home {% endblock %}
+{% block title %} Search {% endblock %}
 {% block content %}
 <div class="container-sm">
     <div class="image-container">
@@ -37,7 +37,7 @@
             <td style="width:20%;"><img src="{{ product.product_image.url }}" alt="Product Image" style="max-width:100%;max-height:auto; border-radius:20px;"></td>
             <td style="width:20%">{{ product.name }}</td>
             <td>{{ product.description }}</td>
-            <td><a href="/product/{{ product.id }}"><Button class="btn btn-danger">Order Now</Button></a></td>
+            <td style="width:20%;"><a href="/product/{{ product.id }}"><Button class="btn btn-danger" style="width:100%">Order Now</Button></a></td>
             </tr>
         {% endfor %}
         </table>

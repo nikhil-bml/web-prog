@@ -1,0 +1,45 @@
+{% extends "healthy_hunger/base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block meta %}<meta name="viewport" content="width=device-width, initial-scale=1.0">{% endblock meta %}
+{% block link1 %} <link rel="stylesheet" href={% static "healthy_hunger/css/bootstrap.min.css" %}> {% endblock link1 %}
+{% block link2 %} <link rel="stylesheet" href={% static "healthy_hunger/css/custom.css" %}> {% endblock link2 %}
+{% block title %} Register {% endblock %}
+{% block content %}
+
+<div class="h-100 d-flex align-items-center justify-content-center mt-4">
+    <div class="rounded-black-box">
+        <form action="", method="POST", class="vertical-center">
+            {% csrf_token %}
+            <div class="form-group mb-2">
+            <label for="username" style="color: white;"><b>Username</b></label>
+            {% render_field form.username placeholder="nick321" class="form-control" %}
+            </div>
+            <div class="form-group mb-2">
+            <label for="first_name" style="color: white;"><b>First Name</b></label>
+            {% render_field form.first_name placeholder="Nick" class="form-control" %}
+            </div>
+            <div class="form-group mb-2">
+            <label for="last_name" style="color: white;"><b>Last Name</b></label>
+            {% render_field form.last_name placeholder="Smith" class="form-control" %}
+            </div>
+            <div class="form-group mb-2">
+            <label for="email" style="color: white;"><b>Email</b></label>
+            {% render_field form.email placeholder="NickSmith@gama.com" class="form-control" %}
+            </div>
+            <div class="form-group mb-2">
+            <label for="password1" style="color: white;"><b>Password</b></label>
+            {% render_field form.password1 placeholder="Nick@20092" class="form-control" %}
+            </div>
+            <div class="form-group mb-2">
+            <label for="password2" style="color: white;"><b>Retype Password</b></label>
+            {% render_field form.password2 placeholder="Nick@20092" class="form-control" %}
+            </div>    
+            <div class="vertical-center">
+            <input type="submit" class="btn btn-primary" style="width:100%" value="Submit">
+            </div>
+          </form>    
+        </div>
+  </div>
+  
+{% endblock %}

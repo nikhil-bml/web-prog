@@ -1,19 +1,16 @@
-#header_btn{
+#nav_btn {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: black;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    font-weight: bold;
+}
+#nav_btn:hover {
+    text-decoration: underline;
 }
 
-.header_container{
-    width: 99%;
+#navbar_butns {
+    margin-top: 1%;
 }
 
-.header_container img{
-    width: 30%;
-    transform: translate(40%,40%);
-}
-.header_container a{
-    transform: translate(-100%,55%);
-}
 body {
     min-height: 100vh; 
     display: flex;
@@ -302,3 +299,20 @@ background-color: aliceblue;
 .contact_submit button {
     width: 100%;
 }
+.rounded-black-box {
+    background-color: black;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    color: white;
+  }
+  
+  .rounded-black-box-login {
+    background-color: black;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    color: white;
+  }

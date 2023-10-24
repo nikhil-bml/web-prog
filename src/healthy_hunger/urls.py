@@ -9,7 +9,11 @@ urlpatterns = [
     path('about/', views.AboutView.as_view(), name='about'),
     path('terms/', views.TermsView.as_view(), name='terms'),
     path('contact/', views.ContactView.as_view(), name='contact'),
-    path('search/<str:product>/', views.Search.as_view(), name='search')
+    path('search/<str:product>/', views.Search.as_view(), name='search'),
+    path('register/', views.Register.as_view(), name='register'),
+    path('login/', views.Login.as_view(), name='login'),
+    path('logout/', views.Logout.as_view(), name='logout'),
+    
 ]
 
 if settings.DEBUG:

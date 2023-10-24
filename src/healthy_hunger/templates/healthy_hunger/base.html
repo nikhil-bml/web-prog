@@ -8,21 +8,58 @@
     
 </head>
 <body>
-    <header class="bg-white" style="height:2%; padding-bottom:3%">
-        <div class="header_container">
-            <div class="row align-items-center">
-                <div class="col-6">
-                    <a href="/"><img src= {% static "healthy_hunger/img/logo.png" %} alt="Your Logo" class="img-fluid mb-1" width="20%" height="10%"></a>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="{% static 'healthy_hunger/img/logo.png' %}" alt="Your Logo" style="width: 50%; margin-left:-70%">
+            </a>
+
+            <ul class="navbar-nav" id="navbar_butns">
+                <li class="nav-item">
+                    <a class="nav-link" id="nav_btn" href="/" style="">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="nav_btn" href="/about/">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="nav_btn" href="/contact/">Contact Us</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li>
+                <a href="/logout/" id="nav_btn" class="btn btn-link">Logout</a>
+                </li>
+                {% else %}
+                <li>
+                <a href="/login/" id="nav_btn" class="btn btn-link">Login</a>
+                </li>
+                {% endif %}
+
+            </ul>
+        </div>
+    </nav>
+
+    
+    {% comment %} <header class="bg-white" style="height: 2%; padding-bottom: 3%;">
+        <div class="navbar">
+            <div class="row">
+                <div style="max-width:30%;margin:0% 5%;">
+                    <a href="/"><img src="{% static 'healthy_hunger/img/logo.png' %}" alt="Your Logo" class="img-fluid" style="width: 100%;"></a>
                 </div>
-                <div class="col-3 text-right">
-                    <a href="/" id='header_btn' class="btn btn-link">Home </a>
-                    <a href="/about/" id='header_btn' class="btn btn-link ml-2">About Us</a>
-                    <a href="/contact/" id='header_btn' class="btn btn-link mr-1">Contact Us</a>
+                <div style="max-width:40%;">
+                    <a href="/" id="header_btn" class="btn btn-link">Home</a>
+                    <a href="/about/" id="header_btn" class="btn btn-link">About Us</a>
+                    <a href="/contact/" id="header_btn" class="btn btn-link">Contact Us</a>
+                    {% if user.is_authenticated %}
+                        <a href="/logout/" id="header_btn" class="btn btn-link">Logout</a>
+                    {% else %}
+                        <a href="/login/" id="header_btn" class="btn btn-link">Login</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
-    </header>
-
+    </header> {% endcomment %}
+    
     <div id="content">
         {% block content %}{% endblock %}
     </div>

@@ -1,8 +1,10 @@
 from django.shortcuts import HttpResponseRedirect,render
 from django.views import View
 from .models import Product
-from .forms import ProductSearchForm, QueryForm
+from .forms import ProductSearchForm, QueryForm, RegisterForm, LoginForm
 from .extras import full_text_search
+from django.contrib.auth import authenticate,login,logout
+
 class Home(View):
     template_name = "healthy_hunger/home.html"
     form = ProductSearchForm
@@ -74,3 +76,42 @@ class Search(View):
         if form.is_valid():
             return HttpResponseRedirect(f"/search/{request.POST.get('name')}/")
         return HttpResponseRedirect("/")
+
+class Register(View):
+    template_name = "healthy_hunger/register.html"
+    form = RegisterForm
+    def get(self, request):
+        context = {"form":self.form}
+        return render(request, self.template_name, context)
+
+    def post(self, request):
+        form = self.form(request.POST)
+        if not form.is_valid():
+            return HttpResponseRedirect("/register/")
+        form.save()
+        return HttpResponseRedirect("/login/")
+        
+class Login(View):
+    template_name = "healthy_hunger/login.html"
+    form = LoginForm
+    def get(self, request):
+        context = {"form":self.form}
+        return render(request, self.template_name, context)
+
+    def post(self, request):
+        form = self.form(request.POST)
+        user=authenticate(username=form.data["username"],password=form.data["password"])
+        print(user)
+        if not user:
+            return HttpResponseRedirect("/login/")
+        
+        login(request, user)
+        return HttpResponseRedirect("/")
+
+class Logout(View):
+    def get(self, request):
+        if request.user.is_authenticated:
+            logout(request)
+            return HttpResponseRedirect("/")
+        return HttpResponseRedirect("/login/")
+        
