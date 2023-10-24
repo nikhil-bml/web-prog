@@ -133,7 +133,7 @@ class Cart(View):
         return render(request, self.template_name, context)
     
     def post(self, request):
-        total_value = int(float(request.POST["total_value"]))
+        total_value = int(float(request.POST["total_value"])) * 100
 
         session = stripe.checkout.Session.create(
             line_items=[
@@ -143,7 +143,7 @@ class Cart(View):
                         'product_data': {
                             'name': 'Food',
                         },
-                        'unit_amount': total_value*100,
+                        'unit_amount': total_value,
                     },
                     'quantity': 1,
                 },
