@@ -24,6 +24,10 @@ class Query(models.Model):
 class Cart(models.Model):
     user = models.ForeignKey(User, to_field="id", on_delete=models.CASCADE, related_name="cart_orders")
     product = models.ForeignKey(Product, to_field="id", on_delete=models.CASCADE, related_name="ordered_by")
+    quantity = models.IntegerField(default=1)
+
+    class Meta:
+        unique_together = ('user', 'product')
 
     def __str__(self) :
         return f"{self.user} has {self.product}"

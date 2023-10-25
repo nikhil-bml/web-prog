@@ -2,7 +2,7 @@
 {% load static %}
 {% block link1 %} <link rel="stylesheet" href={% static "healthy_hunger/css/bootstrap.min.css" %}> {% endblock link1 %}
 {% block link2 %} <link rel="stylesheet" href={% static "healthy_hunger/css/custom.css" %}> {% endblock link2 %}
-{% block title %} Product {% endblock %}
+{% block title %} {{ product.name }} {% endblock %}
 {% block content %}
 
 <div class="custom-container">
@@ -31,7 +31,10 @@
                 {{ product.ingredients|linebreaks }}
             </p> 
             <br><br>
-            <a href=""><button class="nutrieng_order">Click Here To Order Now</button></a>
+            <form method="post">
+                {% csrf_token %}
+                <a href=""><button class="nutrieng_order">Click Here To Order Now</button></a>
+            </form>
         </div>
     </div>
 </div>

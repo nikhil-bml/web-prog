@@ -11,19 +11,21 @@
         <form action="", method="POST" class="form-group vertical-center">
             {% csrf_token %}
             <div class="mb-2">
-            <label for="username" style="color: white;"><b>Username</b></label>
+            <label for="username"><b>Username</b></label>
             {% render_field form.username placeholder="nickos321" class="form-control"  %}
             </div>
             <div class="mb-2">
-            <label for="password" style="color: white;"><b>Password</b></label>
+            <label for="password" ><b>Password</b></label>
             {% render_field form.password placeholder="Nickos@2389" type="password" class="form-control" %}
             </div>
             <div class="vertical-center"> 
             <input type="submit" class="btn btn-primary" style="width:100%" value="Submit">
             </div>
           </form>
-    </div>
+          <p>No Account? <a href="/register/">Register Here</a></p>
+        </div>
   </div>
+
   
 
 {% endblock %}

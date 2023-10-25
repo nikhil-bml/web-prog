@@ -1,6 +1,6 @@
 from django.shortcuts import HttpResponseRedirect,render
 from django.views import View
-from .models import Product
+from .models import Product, Cart
 from .forms import ProductSearchForm, QueryForm, RegisterForm, LoginForm
 from .extras import full_text_search
 from django.contrib.auth import authenticate,login,logout
@@ -40,6 +40,18 @@ class ProductView(View):
         }
 
         return render(request, self.template_name, context)
+    
+    def post(self, request, pk):
+        cart_list = Cart.objects.filter(product_id=pk, user=request.user).first()
+        if not cart_list:
+            inst = Cart.objects.create(product_id=pk, user=request.user)
+            inst.save()
+        else:
+            cart_list.quantity += 1
+            cart_list.save()
+            
+        return HttpResponseRedirect(f"/product/{pk}")
+    
 class AboutView(View):
     template_name = "healthy_hunger/about.html"
     def get(self, request):
@@ -119,15 +131,16 @@ class Logout(View):
             return HttpResponseRedirect("/")
         return HttpResponseRedirect("/login/")
         
-class Cart(View):
+class CartView(View):
     template_name = "healthy_hunger/cart.html"
+
     def get(self, request):
         if not request.user.is_authenticated:
             return HttpResponseRedirect("/login/")
-        products = [product for product in Product.objects.all()]
-        total_price = sum([product.price for product in products])
+        products = [prod for prod in request.user.cart_orders.all()]
+        total_price = sum([prod.product.price * prod.quantity for prod in products])
         context={
-            "products":[product for product in Product.objects.all()],
+            "products":products,
             "total_price":total_price
         }
         return render(request, self.template_name, context)

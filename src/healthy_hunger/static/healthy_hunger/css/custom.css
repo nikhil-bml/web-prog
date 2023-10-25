@@ -316,6 +316,11 @@ background-color: aliceblue;
     width: 400px;
     color: white;
   }
+  
+  .rounded-black-box-login a{ 
+    color: aquamarine;
+  }
+  
 
   .total_div p{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
